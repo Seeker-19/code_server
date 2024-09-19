@@ -46,6 +46,7 @@ const verifyJWT = async (req, res, next) => {
         res.cookie("authToken", token, {
           httpOnly: true,
           secure: true,
+          sameSite: "none",
           maxAge: 15 * 60 * 1000, // 15 minutes
         });
 
@@ -101,6 +102,7 @@ const verifyJWT = async (req, res, next) => {
             res.cookie("authToken", token, {
               httpOnly: true,
               secure: process.env.NODE_ENV === "production",
+              sameSite: "none",
               maxAge: 15 * 60 * 1000, // 15 minutes
             });
 
