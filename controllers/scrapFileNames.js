@@ -20,15 +20,7 @@ const fetchDataForDirectory = async (directoryUrl) => {
 
 // Function to process files and extract file names, handling both files and directories recursively
 const processFilesForNames = async (files) => {
-  const excludedExtensions = [
-    "jpg",
-    "jpeg",
-    "png",
-    "gfg",
-    "gif",
-    "ico",
-    "svg",
-  ];
+  const excludedExtensions = ["jpg", "jpeg", "png", "gfg", "gif", "ico", "svg"];
 
   let fileNames = [];
 
@@ -81,6 +73,8 @@ const getFileNames = async (repo_url) => {
   try {
     console.log(url);
     const response = await fetch(url);
+
+    console.log("res", response);
     if (response.ok) {
       const jsonData = await response.json(); // Get the initial directory content
       const fileNames = await processFilesForNames(jsonData); // Extract file names recursively
