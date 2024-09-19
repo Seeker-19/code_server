@@ -11,6 +11,7 @@ exports.sendTokens = async (user, statusCode, res) => {
   res.cookie("authToken", authToken, {
     httpOnly: true,
     secure: true,
+    sameSite: "none",
     maxAge: 15 * 60 * 1000,
   });
 
@@ -18,6 +19,7 @@ exports.sendTokens = async (user, statusCode, res) => {
   res.cookie("refreshToken", refreshToken, {
     httpOnly: true,
     secure: true,
+    sameSite: "none",
     maxAge: 1 * 24 * 60 * 60 * 1000,
   });
 
